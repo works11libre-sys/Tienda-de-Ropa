@@ -4,319 +4,350 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barbas Hats | Streetwear Premium</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     
     <style>
         :root {
-            --primary: #FF4D00; /* Naranja Neón Streetwear */
-            --bg-dark: #0A0A0A;
-            --glass: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --text-light: #F5F5F5;
-            --radius: 30px;
+            --primary: #2D5BFF; /* Azul Cobalto Eléctrico - Muy tendencia en moda */
+            --accent: #E0FF22;  /* Lima Neón para acentos mínimos */
+            --bg-dark: #050505;
+            --bg-card: #121212;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-light: #FFFFFF;
+            --text-muted: #A0A0A0;
+            --radius: 28px;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
 
         body {
             background-color: var(--bg-dark);
             color: var(--text-light);
             overflow-x: hidden;
-            line-height: 1.6;
+            line-height: 1.4;
         }
 
         h1, h2, h3 {
             font-family: 'Bungee', sans-serif;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* --- NAVBAR --- */
+        /* --- NAVBAR PILL --- */
         .navbar {
             position: fixed;
-            top: 20px;
+            top: 25px;
             left: 50%;
             transform: translateX(-50%);
-            width: 90%;
-            max-width: 600px;
-            background: var(--glass);
-            backdrop-filter: blur(15px);
+            width: 85%;
+            max-width: 500px;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            padding: 15px 30px;
-            border-radius: 50px;
+            padding: 12px 25px;
+            border-radius: 100px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             z-index: 1000;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
         }
 
         .logo {
-            font-family: 'Bungee';
-            font-size: 1.2rem;
-            color: var(--primary);
+            font-size: 1.1rem;
+            color: var(--text-light);
         }
 
         /* --- HERO --- */
         .hero {
-            height: 100vh;
+            height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1521335629791-ce4aec67dd15?q=80&w=2070&auto=format&fit=crop');
+            background: linear-gradient(0deg, var(--bg-dark) 0%, rgba(5,5,5,0.4) 100%), 
+                        url('https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             padding: 20px;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            line-height: 1;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            margin-bottom: 15px;
+            line-height: 0.9;
+            color: var(--text-light);
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 600px;
+            font-size: 1rem;
+            margin-bottom: 35px;
+            color: var(--text-muted);
+            max-width: 500px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .cta-btn {
+            background: var(--text-light);
+            color: var(--bg-dark);
+            padding: 20px 45px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
             background: var(--primary);
             color: white;
-            padding: 18px 40px;
-            border-radius: var(--radius);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            box-shadow: 0 0 20px rgba(255, 77, 0, 0.4);
-            position: relative;
-            overflow: hidden;
-            transition: 0.3s;
         }
 
-        .cta-btn::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255,255,255,0.2);
-            transform: rotate(45deg);
-            transition: 0.5s;
+        /* --- CATALOGO SLIDER --- */
+        .section-header {
+            padding: 80px 30px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
         }
 
-        .cta-btn:hover::after {
-            left: 100%;
-        }
-
-        /* --- CATALOGO SLIDER (MOBILE FIRST) --- */
         .section-title {
-            padding: 50px 20px 20px;
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--primary);
         }
 
         .slider-container {
             display: flex;
             overflow-x: auto;
-            padding: 20px;
-            gap: 20px;
+            padding: 20px 30px 40px;
+            gap: 25px;
             scroll-snap-type: x mandatory;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
         }
 
-        .slider-container::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
-        }
+        .slider-container::-webkit-scrollbar { display: none; }
 
         .product-card {
-            min-width: 280px;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
+            min-width: 300px;
+            background: var(--bg-card);
             border-radius: var(--radius);
-            padding: 15px;
+            padding: 10px;
             scroll-snap-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
+            border: 1px solid transparent;
+            transition: 0.4s;
+        }
+
+        .product-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(45, 91, 255, 0.15);
         }
 
         .product-img {
             width: 100%;
-            height: 300px;
+            height: 380px;
             object-fit: cover;
-            border-radius: 20px;
-            margin-bottom: 15px;
+            border-radius: calc(var(--radius) - 5px);
+            filter: grayscale(20%);
+            transition: 0.5s;
+        }
+
+        .product-card:hover .product-img {
+            filter: grayscale(0%);
+        }
+
+        .card-info {
+            padding: 20px 10px;
+        }
+
+        .card-info h3 {
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            margin-bottom: 5px;
         }
 
         .price {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            margin-bottom: 15px;
             display: block;
-            margin: 10px 0;
         }
 
         .buy-btn {
             width: 100%;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid var(--primary);
+            background: var(--primary);
+            border: none;
             color: white;
-            padding: 12px;
-            border-radius: 15px;
+            padding: 15px;
+            border-radius: 100px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
             transition: 0.3s;
         }
 
-        .buy-btn:hover {
-            background: var(--primary);
-        }
-
-        /* --- STEPPER (PROCESO) --- */
+        /* --- STEPPER --- */
         .stepper {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            padding: 60px 20px;
-            background: #0f0f0f;
+            gap: 40px;
+            padding: 100px 40px;
+            background: #000;
         }
 
         .step {
-            text-align: center;
-            padding: 20px;
+            text-align: left;
+            border-left: 2px solid var(--primary);
+            padding-left: 25px;
         }
 
-        .step i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
+        .step h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--text-light); }
+        .step p { color: var(--text-muted); font-size: 0.9rem; }
 
         /* --- WHATSAPP FLOATING --- */
         .wa-float {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: #25d366;
-            width: 65px;
-            height: 65px;
+            background: var(--primary);
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 35px;
+            font-size: 28px;
             color: white;
             z-index: 1000;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 10px 30px rgba(45, 91, 255, 0.4);
             animation: pulse-wa 2s infinite;
         }
 
         @keyframes pulse-wa {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(45, 91, 255, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(45, 91, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(45, 91, 255, 0); }
         }
 
         /* --- FOOTER --- */
         footer {
-            padding: 50px 20px;
+            padding: 80px 20px;
             text-align: center;
-            border-top: 1px solid var(--glass-border);
+            background: var(--bg-dark);
         }
+
+        .social-links i {
+            font-size: 1.5rem;
+            margin: 0 15px;
+            color: var(--text-muted);
+            transition: 0.3s;
+        }
+
+        .social-links i:hover { color: var(--primary); }
 
         @media (min-width: 768px) {
             .slider-container {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(4, 1fr);
                 overflow-x: visible;
-                max-width: 1200px;
+                max-width: 1400px;
                 margin: 0 auto;
             }
-            .hero h1 { font-size: 5rem; }
         }
     </style>
 </head>
 <body>
 
     <nav class="navbar animate__animated animate__fadeInDown">
-        <div class="logo">BARBAS HATS</div>
-        <div class="menu-icon"><i class="fas fa-bars"></i></div>
+        <div class="logo">BARBAS HATS & CO.</div>
     </nav>
 
     <header class="hero">
-        <h1 class="animate__animated animate__zoomIn">Style Without Limits</h1>
-        <p class="animate__animated animate__fadeInUp">Gorras, hoodies y streetwear premium para quienes no siguen reglas.</p>
-        <a href="#catalogo" class="cta-btn animate__animated animate__pulse animate__infinite">VER COLECCIÓN</a>
+        <h1 class="animate__animated animate__fadeInUp">DROP 2026<br>URBAN WEAR</h1>
+        <p class="animate__animated animate__fadeInUp animate__delay-1s">EDICIÓN LIMITADA. CALIDAD SUPERIOR.</p>
+        <a href="#catalogo" class="cta-btn animate__animated animate__fadeInUp animate__delay-1s">EXPLORAR DROP</a>
     </header>
 
     <section id="catalogo">
-        <h2 class="section-title">Lo Más Vendido 🔥</h2>
+        <div class="section-header">
+            <h2 class="section-title">THE COLLECTION</h2>
+        </div>
+        
         <div class="slider-container">
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1588850567047-3f88a973fd39?q=80&w=1924&auto=format&fit=crop" alt="Gorra Trucker" class="product-img">
-                <h3>Trucker Hat "Black"</h3>
-                <span class="price">$25.00</span>
-                <button class="buy-btn" onclick="sendWA('Trucker Hat Black', '$25.00')">PEDIR POR WHATSAPP</button>
+                <img src="https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?q=80&w=2070&auto=format&fit=crop" alt="Gorra" class="product-img">
+                <div class="card-info">
+                    <h3>COBALT TRUCKER</h3>
+                    <span class="price">$35.00</span>
+                    <button class="buy-btn" onclick="sendWA('Cobalt Trucker', '$35.00')">COMPRAR VÍA WA</button>
+                </div>
             </div>
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1887&auto=format&fit=crop" alt="Hoodie Oversize" class="product-img">
-                <h3>Hoodie Oversize Neon</h3>
-                <span class="price">$45.00</span>
-                <button class="buy-btn" onclick="sendWA('Hoodie Oversize Neon', '$45.00')">PEDIR POR WHATSAPP</button>
+                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1887&auto=format&fit=crop" alt="Hoodie" class="product-img">
+                <div class="card-info">
+                    <h3>ESSENTIAL HOODIE</h3>
+                    <span class="price">$65.00</span>
+                    <button class="buy-btn" onclick="sendWA('Essential Hoodie', '$65.00')">COMPRAR VÍA WA</button>
+                </div>
             </div>
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=2070&auto=format&fit=crop" alt="Short Casual" class="product-img">
-                <h3>Short Street Cargo</h3>
-                <span class="price">$30.00</span>
-                <button class="buy-btn" onclick="sendWA('Short Street Cargo', '$30.00')">PEDIR POR WHATSAPP</button>
+                <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?q=80&w=1926&auto=format&fit=crop" alt="Pants" class="product-img">
+                <div class="card-info">
+                    <h3>CARGO JOGGER</h3>
+                    <span class="price">$70.00</span>
+                    <button class="buy-btn" onclick="sendWA('Cargo Jogger', '$70.00')">COMPRAR VÍA WA</button>
+                </div>
             </div>
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?q=80&w=1926&auto=format&fit=crop" alt="Pantalón" class="product-img">
-                <h3>Pantalon Jogger Pro</h3>
-                <span class="price">$55.00</span>
-                <button class="buy-btn" onclick="sendWA('Pantalon Jogger Pro', '$55.00')">PEDIR POR WHATSAPP</button>
+                <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=2070&auto=format&fit=crop" alt="Short" class="product-img">
+                <div class="card-info">
+                    <h3>NYLON SHORTS</h3>
+                    <span class="price">$40.00</span>
+                    <button class="buy-btn" onclick="sendWA('Nylon Shorts', '$40.00')">COMPRAR VÍA WA</button>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="stepper">
         <div class="step">
-            <i class="fas fa-shopping-cart"></i>
-            <h3>1. Eliges</h3>
-            <p>Selecciona tus prendas favoritas del catálogo.</p>
+            <h3>SELECT</h3>
+            <p>Elige tus piezas exclusivas de nuestra curaduría.</p>
         </div>
         <div class="step">
-            <i class="fab fa-whatsapp"></i>
-            <h3>2. Confirmas</h3>
-            <p>Te atendemos personalmente por WhatsApp.</p>
+            <h3>CHAT</h3>
+            <p>Cerramos los detalles de talla y pago por WhatsApp.</p>
         </div>
         <div class="step">
-            <i class="fas fa-truck-fast"></i>
-            <h3>3. Recibes</h3>
-            <p>Envío express a la puerta de tu casa.</p>
+            <h3>WEAR</h3>
+            <p>Envío prioritario. Únete a la cultura Barbas.</p>
         </div>
     </section>
 
     <footer>
-        <h2 style="color: var(--primary);">BARBAS HATS</h2>
-        <p>Lunes a Sábado: 9:00 AM - 8:00 PM</p>
-        <div style="margin: 20px 0; font-size: 1.5rem;">
-            <i class="fab fa-instagram" style="margin: 0 10px;"></i>
-            <i class="fab fa-facebook" style="margin: 0 10px;"></i>
-            <i class="fab fa-tiktok" style="margin: 0 10px;"></i>
+        <h2 style="margin-bottom: 20px;">BARBAS HATS</h2>
+        <div class="social-links" style="margin-bottom: 30px;">
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-tiktok"></i>
+            <i class="fab fa-twitter"></i>
         </div>
-        <p>© 2026 Barbas Hats Co. - Todos los derechos reservados.</p>
+        <p style="color: var(--text-muted); font-size: 0.8rem;">© 2026 TODOS LOS DERECHOS RESERVADOS.</p>
     </footer>
 
     <a href="https://wa.me/123456789" class="wa-float" target="_blank">
@@ -325,22 +356,17 @@
 
     <script>
         function sendWA(producto, precio) {
-            const telefono = "1234567890"; // Reemplaza con tu número real
-            const mensaje = `¡Hola Barbas Hats! 🔥 Me interesa este producto:
+            const telefono = "1234567890";
+            const mensaje = `¡Hola! 🔥 Me interesa el siguiente artículo del Drop:
             
-🛍️ *PRODUCTO:* ${producto}
-💰 *PRECIO:* ${precio}
+➡️ *ARTÍCULO:* ${producto}
+💰 *VALOR:* ${precio}
 
-¿Tienen disponibilidad en stock?`;
+¿Tienen stock disponible para envío inmediato?`;
             
             const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(mensaje)}`;
             window.open(url, '_blank');
         }
-
-        // Animación suave de aparición al hacer scroll
-        const observerOptions = {
-            threshold: 0.1
-        };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -348,11 +374,9 @@
                     entry.target.classList.add('animate__animated', 'animate__fadeInUp');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.product-card, .step').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.product-card, .step').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
