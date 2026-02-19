@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barbas Hats & Co. | Premium Urban Drop</title>
+    <title>Barbas Hats & Co. | Premium Streetwear</title>
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Montserrat:wght@300;600;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -13,14 +13,13 @@
             --primary: #2D5BFF; 
             --bg-dark: #050505;
             --bg-card: #0F0F0F;
-            --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass: rgba(20, 20, 20, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.12);
             --text-light: #FFFFFF;
             --text-muted: #888888;
             --radius-lg: 35px;
-            --radius-sm: 20px;
-            --shadow-deep: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-            --shadow-glow: 0 0 20px rgba(45, 91, 255, 0.3);
+            --shadow-extreme: 0 25px 60px rgba(0,0,0,0.9);
+            --glow-primary: 0 0 25px rgba(45, 91, 255, 0.4);
         }
 
         * {
@@ -28,44 +27,51 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
-            scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--bg-dark);
             color: var(--text-light);
             overflow-x: hidden;
+            line-height: 1.4;
         }
 
-        /* --- NAVBAR CORREGIDA --- */
-        .navbar {
+        /* --- NAVBAR: CENTRADO TOTAL --- */
+        .nav-wrapper {
             position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: fit-content;
-            min-width: 260px;
-            max-width: 90%;
-            background: rgba(15, 15, 15, 0.8);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            top: 25px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center;
+            z-index: 9999;
+            pointer-events: none; /* Permite click a través del wrapper */
+        }
+
+        .navbar {
+            pointer-events: auto; /* Reactiva el click solo en la barra */
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            padding: 12px 35px;
+            padding: 12px 28px;
             border-radius: 100px;
+            box-shadow: var(--shadow-extreme);
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
-            box-shadow: var(--shadow-deep);
-            white-space: nowrap;
+            max-width: 90%; /* Margen lateral en móviles */
         }
 
         .logo {
             font-family: 'Bungee', sans-serif;
-            font-size: clamp(0.85rem, 4vw, 1.1rem);
+            font-size: clamp(0.9rem, 4.5vw, 1.2rem);
             color: var(--text-light);
             letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(255,255,255,0.2);
+            white-space: nowrap;
+            text-align: center;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         /* --- HERO --- */
@@ -76,72 +82,78 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(180deg, rgba(5,5,5,0.2) 0%, var(--bg-dark) 95%), 
-                        url('https://images.unsplash.com/photo-1534215754734-18e55d13e346?q=80&w=2000&auto=format&fit=crop');
+            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, var(--bg-dark) 90%), 
+                        url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             padding: 20px;
         }
 
         .hero h1 {
-            font-size: clamp(2.8rem, 10vw, 6rem);
             font-family: 'Bungee';
+            font-size: clamp(3rem, 12vw, 7rem);
             line-height: 0.85;
-            margin-bottom: 20px;
-            background: linear-gradient(to bottom, #fff, #666);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .hero p {
-            font-size: 0.9rem;
-            letter-spacing: 4px;
-            color: var(--primary);
             font-weight: 600;
+            letter-spacing: 5px;
+            color: var(--primary);
             margin-bottom: 40px;
             text-transform: uppercase;
+            font-size: 0.8rem;
         }
 
         .cta-btn {
             background: var(--primary);
             color: white;
-            padding: 22px 50px;
+            padding: 22px 55px;
             border-radius: 100px;
             text-decoration: none;
             font-weight: 900;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             letter-spacing: 2px;
-            box-shadow: var(--shadow-glow);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            box-shadow: var(--glow-primary);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: none;
+            animation: pulse-glow 2s infinite;
         }
 
-        .cta-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(45, 91, 255, 0.5);
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(45, 91, 255, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(45, 91, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(45, 91, 255, 0); }
         }
 
-        /* --- CATALOGO SLIDER (Horizontal en móvil) --- */
-        .section-container {
-            padding: 100px 0;
+        /* --- CATALOGO: SLIDER TÁCTIL --- */
+        .section-header {
+            padding: 80px 30px 20px;
         }
 
         .section-title {
             font-family: 'Bungee';
-            font-size: 2rem;
-            padding: 0 30px;
-            margin-bottom: 40px;
+            font-size: 2.2rem;
             color: var(--text-light);
-            border-left: 5px solid var(--primary);
-            margin-left: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: var(--primary);
         }
 
         .slider-container {
             display: flex;
             overflow-x: auto;
-            padding: 20px 30px 60px;
+            padding: 30px;
             gap: 25px;
             scroll-snap-type: x mandatory;
             scrollbar-width: none;
@@ -150,100 +162,94 @@
         .slider-container::-webkit-scrollbar { display: none; }
 
         .product-card {
-            min-width: 310px;
+            min-width: 300px;
             background: var(--bg-card);
             border-radius: var(--radius-lg);
-            padding: 15px;
+            padding: 12px;
             scroll-snap-align: center;
             border: 1px solid var(--glass-border);
-            box-shadow: var(--shadow-deep);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: var(--shadow-extreme);
+            transition: 0.5s ease;
         }
 
         .product-card:hover {
-            transform: translateY(-15px) scale(1.02);
+            transform: translateY(-10px);
             border-color: var(--primary);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 20px rgba(45, 91, 255, 0.2);
         }
 
         .product-img {
             width: 100%;
-            height: 400px;
+            height: 380px;
             object-fit: cover;
             border-radius: 25px;
             margin-bottom: 20px;
         }
 
-        .card-meta {
-            padding: 0 10px 10px;
+        .card-info {
+            padding: 0 10px 15px;
         }
 
-        .card-meta h3 {
-            font-family: 'Montserrat';
+        .card-info h3 {
             font-weight: 900;
             font-size: 1.1rem;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
         }
 
-        .price-tag {
-            font-size: 1.3rem;
+        .price {
+            font-size: 1.4rem;
             color: var(--primary);
             font-weight: 300;
-            margin-bottom: 20px;
             display: block;
+            margin-bottom: 20px;
         }
 
         .buy-btn {
             width: 100%;
-            background: transparent;
-            border: 1px solid var(--glass-border);
-            color: white;
+            background: #fff;
+            color: #000;
+            border: none;
             padding: 18px;
             border-radius: 20px;
             cursor: pointer;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: 0.3s;
         }
 
         .buy-btn:hover {
-            background: white;
-            color: black;
+            background: var(--primary);
+            color: white;
         }
 
         /* --- STEPPER --- */
         .stepper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            padding: 80px 40px;
-            background: #080808;
-            border-radius: 50px 50px 0 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 60px 25px;
         }
 
         .step {
-            flex: 1;
-            min-width: 250px;
-            padding: 30px;
-            background: var(--glass);
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--glass-border);
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            border-bottom: 4px solid var(--primary);
+            text-align: center;
         }
 
-        .step-num {
-            font-family: 'Bungee';
+        .step i {
+            font-size: 2.5rem;
             color: var(--primary);
-            font-size: 2rem;
-            margin-bottom: 10px;
-            display: block;
+            margin-bottom: 20px;
         }
 
         /* --- WHATSAPP --- */
         .wa-float {
             position: fixed;
             bottom: 30px;
-            right: 30px;
+            right: 25px;
             background: #25D366;
             width: 65px;
             height: 65px;
@@ -251,112 +257,109 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 30px;
+            font-size: 32px;
             color: white;
-            z-index: 1000;
-            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3);
-            animation: pulse 2s infinite;
+            z-index: 999;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        footer {
+            padding: 80px 20px;
+            text-align: center;
+            background: #000;
         }
 
-        /* --- RESPONSIVE --- */
         @media (min-width: 1024px) {
             .slider-container {
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
-                overflow-x: visible;
                 max-width: 1300px;
                 margin: 0 auto;
+                overflow-x: visible;
             }
-        }
-
-        footer {
-            padding: 100px 20px;
-            text-align: center;
-            border-top: 1px solid var(--glass-border);
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar animate__animated animate__fadeInDown">
-        <div class="logo">BARBAS HATS & CO.</div>
-    </nav>
+    <div class="nav-wrapper">
+        <nav class="navbar animate__animated animate__fadeInDown">
+            <div class="logo">BARBAS HATS & CO.</div>
+        </nav>
+    </div>
 
     <header class="hero">
-        <p class="animate__animated animate__fadeIn">Season Drop 2026</p>
-        <h1 class="animate__animated animate__slideInUp">UNLEASH<br>THE STYLE</h1>
-        <a href="#catalogo" class="cta-btn animate__animated animate__fadeInUp">EXPLORAR AHORA</a>
+        <p class="animate__animated animate__fadeIn">The New Era of Streetwear</p>
+        <h1 class="animate__animated animate__zoomIn">STAY<br>REAL.</h1>
+        <a href="#catalogo" class="cta-btn">VER CATÁLOGO</a>
     </header>
 
-    <section id="catalogo" class="section-container">
-        <h2 class="section-title">Nuevos Arribos</h2>
+    <section id="catalogo">
+        <div class="section-header">
+            <h2 class="section-title">THE DROP</h2>
+        </div>
+        
         <div class="slider-container">
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=2000&auto=format&fit=crop" class="product-img">
-                <div class="card-meta">
-                    <h3>TRUCKER COBALT</h3>
-                    <span class="price-tag">$35.00</span>
-                    <button class="buy-btn" onclick="order('Trucker Cobalt', '$35.00')">Lo quiero</button>
+                <img src="https://images.unsplash.com/photo-1533055640609-24b498dfd74c?q=80&w=1974&auto=format&fit=crop" class="product-img">
+                <div class="card-info">
+                    <h3>BLACK TRUCKER</h3>
+                    <span class="price">$35.00</span>
+                    <button class="buy-btn" onclick="sendOrder('Black Trucker', '$35.00')">PEDIR AHORA</button>
                 </div>
             </div>
             <div class="product-card">
                 <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1887&auto=format&fit=crop" class="product-img">
-                <div class="card-meta">
-                    <h3>HOODIE ONYX</h3>
-                    <span class="price-tag">$55.00</span>
-                    <button class="buy-btn" onclick="order('Hoodie Onyx', '$55.00')">Lo quiero</button>
+                <div class="card-info">
+                    <h3>ESSENTIAL HOODIE</h3>
+                    <span class="price">$55.00</span>
+                    <button class="buy-btn" onclick="sendOrder('Essential Hoodie', '$55.00')">PEDIR AHORA</button>
                 </div>
             </div>
             <div class="product-card">
                 <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=2070&auto=format&fit=crop" class="product-img">
-                <div class="card-meta">
-                    <h3>STREET SHORTS</h3>
-                    <span class="price-tag">$40.00</span>
-                    <button class="buy-btn" onclick="order('Street Shorts', '$40.00')">Lo quiero</button>
+                <div class="card-info">
+                    <h3>NYLON SHORTS</h3>
+                    <span class="price">$40.00</span>
+                    <button class="buy-btn" onclick="sendOrder('Nylon Shorts', '$40.00')">PEDIR AHORA</button>
                 </div>
             </div>
             <div class="product-card">
                 <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?q=80&w=1926&auto=format&fit=crop" class="product-img">
-                <div class="card-meta">
-                    <h3>CARGO PANTS</h3>
-                    <span class="price-tag">$65.00</span>
-                    <button class="buy-btn" onclick="order('Cargo Pants', '$65.00')">Lo quiero</button>
+                <div class="card-info">
+                    <h3>CARGO JOGGER</h3>
+                    <span class="price">$65.00</span>
+                    <button class="buy-btn" onclick="sendOrder('Cargo Jogger', '$65.00')">PEDIR AHORA</button>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="stepper">
-        <div class="step">
-            <span class="step-num">01.</span>
+        <div class="step animate__animated animate__fadeInUp">
+            <i class="fas fa-check-circle"></i>
             <h3>ELIGE</h3>
-            <p>Selecciona tus favoritos de nuestra colección exclusiva.</p>
+            <p>Mira nuestro drop y elige lo que más te guste.</p>
         </div>
-        <div class="step">
-            <span class="step-num">02.</span>
+        <div class="step animate__animated animate__fadeInUp">
+            <i class="fab fa-whatsapp"></i>
             <h3>CHATEA</h3>
-            <p>Envíanos tu pedido. Te asesoramos con la talla ideal.</p>
+            <p>Escríbenos directamente para confirmar tu pedido.</p>
         </div>
-        <div class="step">
-            <span class="step-num">03.</span>
+        <div class="step animate__animated animate__fadeInUp">
+            <i class="fas fa-shipping-fast"></i>
             <h3>ESTRENA</h3>
-            <p>Recibe en la puerta de tu casa en tiempo récord.</p>
+            <p>Envíos rápidos para que no tengas que esperar.</p>
         </div>
     </section>
 
     <footer>
-        <h2 style="font-family: 'Bungee'; margin-bottom: 20px;">BARBAS HATS & CO.</h2>
-        <p style="color: var(--text-muted); margin-bottom: 30px;">Cultura Urbana • Calidad Premium</p>
-        <div style="font-size: 1.5rem; display: flex; justify-content: center; gap: 20px;">
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-tiktok"></i>
+        <h2 style="font-family: 'Bungee'; margin-bottom: 20px; color: var(--primary);">BARBAS HATS & CO.</h2>
+        <div style="font-size: 1.5rem; margin-bottom: 20px;">
+            <i class="fab fa-instagram" style="margin: 0 10px;"></i>
+            <i class="fab fa-tiktok" style="margin: 0 10px;"></i>
         </div>
+        <p style="color: var(--text-muted); font-size: 0.8rem;">© 2026 PREMIUM URBAN DROP</p>
     </footer>
 
     <a href="https://wa.me/123456789" class="wa-float" target="_blank">
@@ -364,19 +367,19 @@
     </a>
 
     <script>
-        function order(name, price) {
+        function sendOrder(name, price) {
             const phone = "123456789"; // Tu número aquí
-            const msg = `¡Hola! 🔥 Me interesa este artículo:
+            const msg = `¡Hola Barbas Hats! 🔥 Me interesa este producto:
             
-📦 *PRODUCTO:* ${name}
+🧢 *PRODUCTO:* ${name}
 💰 *PRECIO:* ${price}
 
-¿Tienen stock para envío inmediato?`;
+¿Tienen disponibilidad?`;
             window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        // Observer para animaciones de scroll
-        const obs = new IntersectionObserver((entries) => {
+        // Animaciones al hacer scroll
+        const scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach(e => {
                 if (e.isIntersecting) {
                     e.target.style.opacity = "1";
@@ -387,7 +390,7 @@
 
         document.querySelectorAll('.product-card, .step').forEach(el => {
             el.style.opacity = "0";
-            obs.observe(el);
+            scrollObserver.observe(el);
         });
     </script>
 </body>
