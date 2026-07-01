@@ -69,9 +69,25 @@
             transition: var(--transition-smooth);
         }
 
+        .cart-count {
+            position: absolute;
+            top: -7px;
+            right: -10px;
+            background: var(--accent-black);
+            color: var(--bg-pure);
+            font-size: 0.65rem;
+            font-weight: 800;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         /* --- HERO --- */
         header {
-            padding: 140px 24px 40px 24px;
+            padding: 140px 24px 20px 24px;
             text-align: center;
         }
 
@@ -125,17 +141,25 @@
             border-color: var(--accent-black);
         }
 
-        /* --- CATALOGO GRID --- */
+        /* --- CATALOGO EN CARRUSEL (DOS EN DOS EN MÓVIL) --- */
         .catalog-section {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px 60px 20px;
+            padding: 0 20px 40px 20px;
+            position: relative;
         }
 
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
+        .carousel-container {
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            display: flex;
+            gap: 20px;
+            padding-bottom: 20px;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .carousel-container::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
         }
 
         /* --- PRODUCT CARD --- */
@@ -148,6 +172,8 @@
             flex-direction: column;
             justify-content: space-between;
             transition: var(--transition-smooth);
+            flex: 0 0 calc(50% - 10px); /* 2 piezas por vista por defecto */
+            scroll-snap-align: start;
         }
 
         .product-card:hover {
@@ -260,7 +286,137 @@
             transition: var(--transition-smooth);
         }
 
-        /* --- SECCIÓN LOGÍSTICA DE ENTREGA (CHECKOUT AREA) --- */
+        /* --- CONTENEDOR CARRITO LATERAL (SIDE CART) --- */
+        .side-cart {
+            position: fixed;
+            top: 0; right: 0;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            background: var(--bg-pure);
+            box-shadow: -10px 0 40px rgba(0,0,0,0.1);
+            z-index: 150;
+            transform: translateX(100%);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .side-cart.active {
+            transform: translateX(0);
+        }
+
+        .cart-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-glass);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h2 {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        .close-cart-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .cart-items-container {
+            padding: 24px;
+            flex-grow: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .cart-empty-msg {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 40px;
+        }
+
+        /* CART ITEM ROW */
+        .cart-item {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 16px;
+        }
+
+        .cart-item-img {
+            width: 60px; height: 60px;
+            background: var(--bg-surface);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item-details h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .cart-item-meta {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .cart-item-price {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .cart-qty-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg-surface);
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        .cart-qty-control button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 0 4px;
+        }
+
+        /* TOTAL SIDEBAR BLOCK */
+        .cart-footer-summary {
+            padding: 24px;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-glass);
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        /* --- SECCIÓN LOGÍSTICA DE ENTREGA --- */
         .delivery-section {
             max-width: 600px;
             margin: 0 auto 80px auto;
@@ -392,13 +548,24 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- RESPONSIVO MÓVIL (AJUSTES PRECISOS) --- */
+        /* --- RESPONSIVO MÓVIL --- */
         @media (max-width: 768px) {
             header { padding-top: 100px; }
-            .products-grid { grid-template-columns: 1fr; gap: 16px; }
+            .product-card { flex: 0 0 calc(50% - 10px); padding: 12px; border-radius: 14px; }
+            .product-display-frame { height: 140px; margin-bottom: 10px; }
+            .product-display-frame i { font-size: 2.5rem; }
+            .product-info h3 { font-size: 0.9rem; }
+            .product-price { font-size: 0.8rem; margin-bottom: 10px; }
+            .size-option, .fabric-option { padding: 4px 8px; font-size: 0.65rem; }
+            .buy-action-btn { padding: 10px; font-size: 0.7rem; }
             .filter-container { overflow-x: auto; justify-content: flex-start; white-space: nowrap; padding-bottom: 5px; }
             .filter-btn { padding: 8px 16px; }
             .delivery-section { border-radius: 0; border-left: none; border-right: none; }
+        }
+
+        @media (max-width: 480px) {
+            /* Mantiene estrictamente 2 piezas visibles en pantallas muy compactas */
+            .product-card { flex: 0 0 calc(50% - 10px); }
         }
     </style>
 </head>
@@ -407,7 +574,10 @@
     <!-- NAV BAR -->
     <nav>
         <div class="brand-logo">VNDL STUDIO</div>
-        <button class="cart-icon-btn"><i class="fa-solid fa-bag-shopping"></i></button>
+        <button class="cart-icon-btn" onclick="toggleCart(true)">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-count" id="cartCount">0</span>
+        </button>
     </nav>
 
     <!-- CABECERA -->
@@ -424,12 +594,12 @@
         </div>
     </header>
 
-    <!-- CATALOGO -->
+    <!-- CATALOGO (MODO CARRUSEL INTERACTIVO) -->
     <main class="catalog-section">
-        <div class="products-grid" id="catalogGrid">
+        <div class="carousel-container" id="catalogGrid">
             
             <!-- PRODUCTO 1 -->
-            <div class="product-card" data-category="gorras">
+            <div class="product-card" data-category="gorras" id="p1">
                 <div>
                     <div class="card-brand-badge">Barbas Hats Co.</div>
                     <div class="product-display-frame">
@@ -437,13 +607,13 @@
                     </div>
                     <div class="product-info">
                         <h3>Gorra "Vanguard"</h3>
-                        <div class="product-price">$1,200 MXN</div>
+                        <div class="product-price" data-price="1200">$1,200 MXN</div>
                     </div>
                     <div class="config-group">
                         <span class="config-label">Talla</span>
                         <div class="size-selector">
-                            <button class="size-option selected" onclick="selectOption(this, '.size-option')">S/M (56cm)</button>
-                            <button class="size-option" onclick="selectOption(this, '.size-option')">L/XL (58cm)</button>
+                            <button class="size-option selected" onclick="selectOption(this, '.size-option')">S/M</button>
+                            <button class="size-option" onclick="selectOption(this, '.size-option')">L/XL</button>
                         </div>
                     </div>
                     <div class="config-group">
@@ -454,21 +624,21 @@
                         </div>
                     </div>
                 </div>
-                <button class="buy-action-btn" onclick="selectProduct('Gorra Vanguard', '$1,200 MXN')">
-                    Seleccionar Pieza <i class="fa-solid fa-check"></i>
+                <button class="buy-action-btn" onclick="addProductToCart('p1', 'Gorra Vanguard', 1200, 'fa-hat-cowboy-side')">
+                    Seleccionar <i class="fa-solid fa-plus"></i>
                 </button>
             </div>
 
             <!-- PRODUCTO 2 -->
-            <div class="product-card" data-category="tenis">
+            <div class="product-card" data-category="tenis" id="p2">
                 <div>
                     <div class="card-brand-badge">Alexander McQueen</div>
                     <div class="product-display-frame">
                         <i class="fa-solid fa-shoe-prints"></i>
                     </div>
                     <div class="product-info">
-                        <h3>Oversized Court Black</h3>
-                        <div class="product-price">$9,800 MXN</div>
+                        <h3>Oversized Court</h3>
+                        <div class="product-price" data-price="9800">$9,800 MXN</div>
                     </div>
                     <div class="config-group">
                         <span class="config-label">Talla (EUR)</span>
@@ -479,21 +649,21 @@
                         </div>
                     </div>
                 </div>
-                <button class="buy-action-btn" onclick="selectProduct('Oversized Court Black', '$9,800 MXN')">
-                    Seleccionar Pieza <i class="fa-solid fa-check"></i>
+                <button class="buy-action-btn" onclick="addProductToCart('p2', 'Oversized Court Black', 9800, 'fa-shoe-prints')">
+                    Seleccionar <i class="fa-solid fa-plus"></i>
                 </button>
             </div>
 
             <!-- PRODUCTO 3 -->
-            <div class="product-card" data-category="playeras">
+            <div class="product-card" data-category="playeras" id="p3">
                 <div>
                     <div class="card-brand-badge">Dolce & Gabbana</div>
                     <div class="product-display-frame">
                         <i class="fa-solid fa-shirt"></i>
                     </div>
                     <div class="product-info">
-                        <h3>Monogram Luxury Tee</h3>
-                        <div class="product-price">$3,400 MXN</div>
+                        <h3>Monogram Luxury</h3>
+                        <div class="product-price" data-price="3400">$3,400 MXN</div>
                     </div>
                     <div class="config-group">
                         <span class="config-label">Talla</span>
@@ -504,13 +674,31 @@
                         </div>
                     </div>
                 </div>
-                <button class="buy-action-btn" onclick="selectProduct('Monogram Luxury Tee', '$3,400 MXN')">
-                    Seleccionar Pieza <i class="fa-solid fa-check"></i>
+                <button class="buy-action-btn" onclick="addProductToCart('p3', 'Monogram Luxury Tee', 3400, 'fa-shirt')">
+                    Seleccionar <i class="fa-solid fa-plus"></i>
                 </button>
             </div>
 
         </div>
     </main>
+
+    <!-- SHOPPING CART LATERAL (SIDE CART) -->
+    <div class="side-cart" id="sideCart">
+        <div class="cart-header">
+            <h2>Tu Orden VNDL</h2>
+            <button class="close-cart-btn" onclick="toggleCart(false)"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items-container" id="cartItemsContainer">
+            <div class="cart-empty-msg">Tu set de orden está vacío.</div>
+        </div>
+        <div class="cart-footer-summary">
+            <div class="summary-row">
+                <span>Total Estimado:</span>
+                <span id="cartTotalSum">$0 MXN</span>
+            </div>
+            <button class="buy-action-btn" onclick="goToCheckout()">Configurar Entrega</button>
+        </div>
+    </div>
 
     <!-- LOGÍSTICA DE ENTREGA INTERACTIVA -->
     <section class="delivery-section" id="checkoutZone">
@@ -528,7 +716,6 @@
         </div>
 
         <form id="deliveryForm">
-            <!-- Campos Universales -->
             <div class="form-group">
                 <label>Nombre Completo</label>
                 <input type="text" id="custName" placeholder="Ej. Juan Pérez" required>
@@ -589,8 +776,7 @@
     </footer>
 
     <script>
-        let currentProduct = "Ninguno";
-        let currentPrice = "";
+        let cart = [];
         let selectedMethod = "personal";
 
         function selectOption(element, className) {
@@ -628,25 +814,119 @@
             }
         }
 
-        function selectProduct(name, price) {
-            currentProduct = name;
-            currentPrice = price;
-            
-            const toast = document.getElementById('purchaseToast');
-            document.getElementById('toastTitle').innerText = "Pieza Seleccionada";
-            document.getElementById('toastDetails').innerText = `${name} (${price}) se vinculó a los datos de entrega.`;
-            
-            toast.classList.add('active');
-            setTimeout(() => toast.classList.remove('active'), 3500);
+        /* --- LOGICA DEL CARRITO DE COMPRAS --- */
+        function toggleCart(open) {
+            const sideCart = document.getElementById('sideCart');
+            if(open) sideCart.classList.add('active');
+            else sideCart.classList.remove('active');
+        }
 
-            // Hacer scroll suave directo al formulario de entrega en móviles
+        function addProductToCart(productId, name, price, iconClass) {
+            const productCard = document.getElementById(productId);
+            
+            // Recoger especificaciones seleccionadas del producto en ese instante
+            const sizeActive = productCard.querySelector('.size-option.selected');
+            const size = sizeActive ? sizeActive.innerText : 'Única';
+            
+            const fabricActive = productCard.querySelector('.fabric-option.selected');
+            const fabric = fabricActive ? fabricActive.innerText : '';
+
+            // Crear una firma única basada en ID + Atributos
+            const cartItemId = `${productId}-${size}-${fabric}`;
+
+            const existingItem = cart.find(item => item.id === cartItemId);
+
+            if(existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({
+                    id: cartItemId,
+                    name: name,
+                    price: price,
+                    size: size,
+                    fabric: fabric,
+                    icon: iconClass,
+                    qty: 1
+                });
+            }
+
+            updateCartUI();
+            showToast("Agregado", `${name} se sumó al carrito.`);
+        }
+
+        function changeQty(itemId, amount) {
+            const item = cart.find(i => i.id === itemId);
+            if(!item) return;
+
+            item.qty += amount;
+            if(item.qty <= 0) {
+                cart = cart.filter(i => i.id !== itemId);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cartItemsContainer');
+            const countBadge = document.getElementById('cartCount');
+            const totalSumLabel = document.getElementById('cartTotalSum');
+
+            container.innerHTML = "";
+            let totalItems = 0;
+            let totalCash = 0;
+
+            if(cart.length === 0) {
+                container.innerHTML = '<div class="cart-empty-msg">Tu set de orden está vacío.</div>';
+            } else {
+                cart.forEach(item => {
+                    totalItems += item.qty;
+                    totalCash += (item.price * item.qty);
+
+                    const metaSpecs = item.fabric ? `Talla: ${item.size} | ${item.fabric}` : `Talla: ${item.size}`;
+
+                    const itemRow = document.createElement('div');
+                    itemRow.classList.add('cart-item');
+                    itemRow.innerHTML = `
+                        <div class="cart-item-img"><i class="fa-solid ${item.icon}"></i></div>
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <div class="cart-item-meta">${metaSpecs}</div>
+                            <div class="cart-item-price">$${(item.price * item.qty).toLocaleString()} MXN</div>
+                        </div>
+                        <div class="cart-qty-control">
+                            <button onclick="changeQty('${item.id}', -1)">-</button>
+                            <span style="font-size:0.85rem; font-weight:700;">${item.qty}</span>
+                            <button onclick="changeQty('${item.id}', 1)">+</button>
+                        </div>
+                    `;
+                    container.appendChild(itemRow);
+                });
+            }
+
+            countBadge.innerText = totalItems;
+            totalSumLabel.innerText = `$${totalCash.toLocaleString()} MXN`;
+        }
+
+        function goToCheckout() {
+            toggleCart(false);
             document.getElementById('checkoutZone').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showToast(title, details) {
+            const toast = document.getElementById('purchaseToast');
+            document.getElementById('toastTitle').innerText = title;
+            document.getElementById('toastDetails').innerText = details;
+            toast.classList.add('active');
+            setTimeout(() => toast.classList.remove('active'), 3000);
         }
 
         function processOrder() {
             const name = document.getElementById('custName').value;
             const phone = document.getElementById('custPhone').value;
 
+            if(cart.length === 0) {
+                alert("El carrito está vacío. Agrega prendas antes de ordenar.");
+                return;
+            }
             if(!name || !phone) {
                 alert("Por favor llena los campos obligatorios (Nombre y WhatsApp)");
                 return;
@@ -663,16 +943,26 @@
                 logisticaText = `Método: Envío por Paquetería\nDirección: ${addr}, CP: ${cp}, Ciudad: ${city}`;
             }
 
-            // Construcción del mensaje profesional para WhatsApp
-            const mensaje = `Hola VNDL STUDIO, me interesa ordenar:\n\n` +
-                            `• Pieza: ${currentProduct}\n` +
-                            `• Precio: ${currentPrice}\n\n` +
-                            `Datos del Cliente:\n` +
+            // Construir lista de prendas compradas dinámicamente
+            let prendasText = "";
+            let totalOrden = 0;
+            cart.forEach(item => {
+                const sub = item.price * item.qty;
+                totalOrden += sub;
+                const specs = item.fabric ? `(${item.size}, ${item.fabric})` : `(${item.size})`;
+                prendasText += `• ${item.qty}x ${item.name} ${specs} — $${sub.toLocaleString()} MXN\n`;
+            });
+
+            // Construcción del mensaje final estructurado
+            const mensaje = `Hola VNDL STUDIO, me interesa generar la siguiente orden:\n\n` +
+                            `🛍️ PRENDAS SELECCIONADAS:\n${prendasText}\n` +
+                            `💰 TOTAL: $${totalOrden.toLocaleString()} MXN\n\n` +
+                            `👤 DATOS DEL CLIENTE:\n` +
                             `• Nombre: ${name}\n` +
                             `• Tel: ${phone}\n\n` +
-                            `Logística de Entrega:\n${logisticaText}`;
+                            `📍 LOGÍSTICA DE ENTREGA:\n${logisticaText}`;
 
-            const url = `https://wa.me/5215500000000?text=${encodeURIComponent(mensaje)}`; // Reemplaza con tu número real
+            const url = `https://wa.me/5215500000000?text=${encodeURIComponent(mensaje)}`;
             window.open(url, '_blank');
         }
     </script>
