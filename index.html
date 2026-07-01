@@ -2,396 +2,602 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barbas Hats & Co. | Premium Streetwear</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Montserrat:wght@300;600;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Store GH | Premium Streetwear Syndicate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     
     <style>
         :root {
-            --primary: #2D5BFF; 
-            --bg-dark: #050505;
-            --bg-card: #0F0F0F;
-            --glass: rgba(20, 20, 20, 0.8);
-            --glass-border: rgba(255, 255, 255, 0.12);
-            --text-light: #FFFFFF;
-            --text-muted: #888888;
-            --radius-lg: 35px;
-            --shadow-extreme: 0 25px 60px rgba(0,0,0,0.9);
-            --glow-primary: 0 0 25px rgba(45, 91, 255, 0.4);
+            --bg-pure: #000000;
+            --bg-card: #0b0b0c;
+            --bg-surface: #121214;
+            --accent-white: #ffffff;
+            --border-glass: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(255, 255, 255, 0.2);
+            --text-main: #f5f5f7;
+            --text-secondary: #86868b;
+            --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-pure);
+            color: var(--text-main);
             overflow-x: hidden;
-            line-height: 1.4;
         }
 
-        /* --- NAVBAR: CENTRADO TOTAL --- */
-        .nav-wrapper {
+        /* --- NAVIGATION --- */
+        nav {
             position: fixed;
-            top: 25px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center; /* Centra horizontalmente */
-            align-items: center;
-            z-index: 9999;
-            pointer-events: none; /* Permite click a través del wrapper */
-        }
-
-        .navbar {
-            pointer-events: auto; /* Reactiva el click solo en la barra */
-            background: var(--glass);
+            top: 0; width: 100%;
+            background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            padding: 12px 28px;
-            border-radius: 100px;
-            box-shadow: var(--shadow-extreme);
+            border-bottom: 1px solid var(--border-glass);
+            z-index: 100;
+            padding: 18px 24px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            max-width: 90%; /* Margen lateral en móviles */
         }
 
-        .logo {
-            font-family: 'Bungee', sans-serif;
-            font-size: clamp(0.9rem, 4.5vw, 1.2rem);
-            color: var(--text-light);
-            letter-spacing: 2px;
-            white-space: nowrap;
-            text-align: center;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        .brand-logo {
+            font-family: 'Syncopate', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 4px;
+            color: var(--accent-white);
+            text-transform: uppercase;
+        }
+
+        .cart-icon-btn {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+        
+        .cart-icon-btn:hover {
+            color: var(--text-secondary);
+            transform: scale(1.05);
         }
 
         /* --- HERO --- */
-        .hero {
-            height: 100vh;
+        header {
+            padding: 160px 24px 60px 24px;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            font-family: 'Syncopate', sans-serif;
+            font-size: clamp(2rem, 6vw, 3.8rem);
+            font-weight: 700;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 15px;
+            background: linear-gradient(180deg, #ffffff 40%, #555555 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            font-size: clamp(0.85rem, 1.8vw, 1rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- FILTROS DE CATEGORÍAS --- */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            padding: 0 16px;
+        }
+
+        .filter-btn {
+            background: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid var(--border-glass);
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent-white);
+            color: var(--bg-pure);
+            border-color: var(--accent-white);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+        }
+
+        /* --- INSTALACIÓN DEL CATALOGO GRID --- */
+        .catalog-section {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px 100px 24px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* --- PRODUCT CARD PREMIUM --- */
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, var(--bg-dark) 90%), 
-                        url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            padding: 20px;
-        }
-
-        .hero h1 {
-            font-family: 'Bungee';
-            font-size: clamp(3rem, 12vw, 7rem);
-            line-height: 0.85;
-            margin-bottom: 15px;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .hero p {
-            font-weight: 600;
-            letter-spacing: 5px;
-            color: var(--primary);
-            margin-bottom: 40px;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-        }
-
-        .cta-btn {
-            background: var(--primary);
-            color: white;
-            padding: 22px 55px;
-            border-radius: 100px;
-            text-decoration: none;
-            font-weight: 900;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            box-shadow: var(--glow-primary);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: none;
-            animation: pulse-glow 2s infinite;
-        }
-
-        @keyframes pulse-glow {
-            0% { box-shadow: 0 0 0 0 rgba(45, 91, 255, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(45, 91, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(45, 91, 255, 0); }
-        }
-
-        /* --- CATALOGO: SLIDER TÁCTIL --- */
-        .section-header {
-            padding: 80px 30px 20px;
-        }
-
-        .section-title {
-            font-family: 'Bungee';
-            font-size: 2.2rem;
-            color: var(--text-light);
+            justify-content: space-between;
+            transition: var(--transition-smooth);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
             position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 60%;
-            height: 4px;
-            background: var(--primary);
-        }
-
-        .slider-container {
-            display: flex;
-            overflow-x: auto;
-            padding: 30px;
-            gap: 25px;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-        }
-
-        .slider-container::-webkit-scrollbar { display: none; }
-
-        .product-card {
-            min-width: 300px;
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 12px;
-            scroll-snap-align: center;
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--shadow-extreme);
-            transition: 0.5s ease;
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
+            transform: translateY(-8px);
+            border-color: var(--border-hover);
+            box-shadow: 0 30px 60px rgba(255, 255, 255, 0.03), 0 20px 40px rgba(0,0,0,0.6);
         }
 
-        .product-img {
-            width: 100%;
-            height: 380px;
-            object-fit: cover;
-            border-radius: 25px;
-            margin-bottom: 20px;
-        }
-
-        .card-info {
-            padding: 0 10px 15px;
-        }
-
-        .card-info h3 {
-            font-weight: 900;
-            font-size: 1.1rem;
-            margin-bottom: 8px;
+        .card-brand-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
         }
 
-        .price {
-            font-size: 1.4rem;
-            color: var(--primary);
-            font-weight: 300;
-            display: block;
+        .product-display-frame {
+            width: 100%;
+            height: 220px;
+            background: var(--bg-surface);
+            border-radius: 16px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Íconos conceptuales premium que simulan el producto */
+        .product-display-frame i {
+            font-size: 4.5rem;
+            color: rgba(255, 255, 255, 0.05);
+            transition: var(--transition-smooth);
+        }
+
+        .product-card:hover .product-display-frame i {
+            transform: scale(1.1) rotate(-5deg);
+            color: rgba(255, 255, 255, 0.12);
+        }
+
+        .product-info h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--accent-white);
+            margin-bottom: 6px;
+            letter-spacing: -0.3px;
+        }
+
+        .product-price {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-main);
             margin-bottom: 20px;
         }
 
-        .buy-btn {
-            width: 100%;
-            background: #fff;
-            color: #000;
-            border: none;
-            padding: 18px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 800;
+        /* --- CONFIGURADORES INTERACTIVOS --- */
+        .config-group {
+            margin-bottom: 16px;
+        }
+
+        .config-label {
+            font-size: 0.65rem;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: 0.3s;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            display: block;
         }
 
-        .buy-btn:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* --- STEPPER --- */
-        .stepper {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            padding: 60px 25px;
-        }
-
-        .step {
-            background: var(--bg-card);
-            padding: 40px;
-            border-radius: var(--radius-lg);
-            border-bottom: 4px solid var(--primary);
-            text-align: center;
-        }
-
-        .step i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        /* --- WHATSAPP --- */
-        .wa-float {
-            position: fixed;
-            bottom: 30px;
-            right: 25px;
-            background: #25D366;
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
+        /* Selectores de Talla Modernos */
+        .size-selector, .fabric-selector {
             display: flex;
-            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .size-option, .fabric-option {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            color: var(--text-main);
+            padding: 6px 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .size-option:hover, .fabric-option:hover {
+            border-color: var(--text-secondary);
+        }
+
+        .size-option.selected, .fabric-option.selected {
+            background: var(--accent-white);
+            color: var(--bg-pure);
+            border-color: var(--accent-white);
+        }
+
+        /* --- BOTÓN DE COMPRA ESTILO APPLE --- */
+        .buy-action-btn {
+            width: 100%;
+            background: var(--accent-white);
+            color: var(--bg-pure);
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
             align-items: center;
-            font-size: 32px;
-            color: white;
-            z-index: 999;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+            transition: var(--transition-smooth);
         }
 
+        .buy-action-btn:hover {
+            transform: scale(1.02);
+            background: #e5e5ea;
+        }
+
+        /* --- NOTIFICACIÓN MODAL --- */
+        .success-toast {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-hover);
+            padding: 16px 24px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            z-index: 110;
+            transform: translateY(150%);
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .success-toast.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .success-toast i {
+            color: #34c759; /* Verde iOS */
+            font-size: 1.2rem;
+        }
+
+        /* --- FOOTER --- */
         footer {
-            padding: 80px 20px;
+            padding: 60px 24px;
+            border-top: 1px solid var(--border-glass);
             text-align: center;
-            background: #000;
+            background: #050505;
         }
 
-        @media (min-width: 1024px) {
-            .slider-container {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                max-width: 1300px;
-                margin: 0 auto;
-                overflow-x: visible;
-            }
+        .footer-logo {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- RESPONSIVO --- */
+        @media (max-width: 768px) {
+            header { padding-top: 130px; }
+            .products-grid { grid-template-columns: 1fr; gap: 20px; }
+            .filter-container { gap: 8px; }
+            .filter-btn { padding: 8px 18px; font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="nav-wrapper">
-        <nav class="navbar animate__animated animate__fadeInDown">
-            <div class="logo">BARBAS HATS & CO.</div>
-        </nav>
-    </div>
+    <!-- NAV BAR BAR -->
+    <nav>
+        <div class="brand-logo">STORE GH</div>
+        <button class="cart-icon-btn"><i class="fa-solid fa-bag-shopping"></i></button>
+    </nav>
 
-    <header class="hero">
-        <p class="animate__animated animate__fadeIn">The New Era of Streetwear</p>
-        <h1 class="animate__animated animate__zoomIn">STAY<br>REAL.</h1>
-        <a href="#catalogo" class="cta-btn">VER CATÁLOGO</a>
+    <!-- CABECERA -->
+    <header>
+        <h1>ALTA COSTURA STREET</h1>
+        <p>Curaduría exclusiva de drops limitados. Diseñado para las calles, confeccionado para el lujo.</p>
+        
+        <!-- CONTROLES FILTRADO -->
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterCatalog('all')">Ver Todo</button>
+            <button class="filter-btn" onclick="filterCatalog('gorras')">Gorras</button>
+            <button class="filter-btn" onclick="filterCatalog('playeras')">Playeras</button>
+            <button class="filter-btn" onclick="filterCatalog('sudaderas')">Sudaderas</button>
+            <button class="filter-btn" onclick="filterCatalog('tenis')">Sneakers</button>
+        </div>
     </header>
 
-    <section id="catalogo">
-        <div class="section-header">
-            <h2 class="section-title">THE DROP</h2>
-        </div>
-        
-        <div class="slider-container">
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1533055640609-24b498dfd74c?q=80&w=1974&auto=format&fit=crop" class="product-img">
-                <div class="card-info">
-                    <h3>BLACK TRUCKER</h3>
-                    <span class="price">$35.00</span>
-                    <button class="buy-btn" onclick="sendOrder('Black Trucker', '$35.00')">PEDIR AHORA</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1887&auto=format&fit=crop" class="product-img">
-                <div class="card-info">
-                    <h3>ESSENTIAL HOODIE</h3>
-                    <span class="price">$55.00</span>
-                    <button class="buy-btn" onclick="sendOrder('Essential Hoodie', '$55.00')">PEDIR AHORA</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=2070&auto=format&fit=crop" class="product-img">
-                <div class="card-info">
-                    <h3>NYLON SHORTS</h3>
-                    <span class="price">$40.00</span>
-                    <button class="buy-btn" onclick="sendOrder('Nylon Shorts', '$40.00')">PEDIR AHORA</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?q=80&w=1926&auto=format&fit=crop" class="product-img">
-                <div class="card-info">
-                    <h3>CARGO JOGGER</h3>
-                    <span class="price">$65.00</span>
-                    <button class="buy-btn" onclick="sendOrder('Cargo Jogger', '$65.00')">PEDIR AHORA</button>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- CATALOGO -->
+    <main class="catalog-section">
+        <div class="products-grid" id="catalogGrid">
+            
+            <!-- PRODUCTO 1: GORRA BARBAS HATS -->
+            <div class="product-card" data-category="gorras">
+                <div>
+                    <div class="card-brand-badge">Barbas Hats Co.</div>
+                    <div class="product-display-frame">
+                        <i class="fa-solid fa-hat-cowboy-side"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Gorra "Vanguard" Edition</h3>
+                        <div class="product-price">$1,200 MXN</div>
+                    </div>
+                    
+                    <!-- Configuración Interactiva -->
+                    <div class="config-group">
+                        <span class="config-label">Talla (Medida)</span>
+                        <div class="size-selector">
+                            <button class="size-option selected" onclick="selectSize(this)">S/M (56cm)</button>
+                            <button class="size-option" onclick="selectSize(this)">L/XL (58cm)</button>
+                        </div>
+                    </div>
 
-    <section class="stepper">
-        <div class="step animate__animated animate__fadeInUp">
-            <i class="fas fa-check-circle"></i>
-            <h3>ELIGE</h3>
-            <p>Mira nuestro drop y elige lo que más te guste.</p>
-        </div>
-        <div class="step animate__animated animate__fadeInUp">
-            <i class="fab fa-whatsapp"></i>
-            <h3>CHATEA</h3>
-            <p>Escríbenos directamente para confirmar tu pedido.</p>
-        </div>
-        <div class="step animate__animated animate__fadeInUp">
-            <i class="fas fa-shipping-fast"></i>
-            <h3>ESTRENA</h3>
-            <p>Envíos rápidos para que no tengas que esperar.</p>
-        </div>
-    </section>
+                    <div class="config-group">
+                        <span class="config-label">Material / Tela</span>
+                        <div class="fabric-selector">
+                            <button class="fabric-option selected" onclick="selectFabric(this)">Gamuza</button>
+                            <button class="fabric-option" onclick="selectFabric(this)">Algodón</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="buy-action-btn" onclick="triggerPurchase('Gorra Vanguard')">
+                    Adquirir Pieza <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
 
+            <!-- PRODUCTO 2: SNEAKERS ALEXANDER MCQUEEN -->
+            <div class="product-card" data-category="tenis">
+                <div>
+                    <div class="card-brand-badge">Alexander McQueen</div>
+                    <div class="product-display-frame">
+                        <i class="fa-solid fa-shoe-prints"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Oversized Court Black</h3>
+                        <div class="product-price">$9,800 MXN</div>
+                    </div>
+                    
+                    <div class="config-group">
+                        <span class="config-label">Talla (EUR)</span>
+                        <div class="size-selector">
+                            <button class="size-option selected" onclick="selectSize(this)">40</button>
+                            <button class="size-option" onclick="selectSize(this)">41</button>
+                            <button class="size-option" onclick="selectSize(this)">42</button>
+                            <button class="size-option" onclick="selectSize(this)">43</button>
+                        </div>
+                    </div>
+
+                    <div class="config-group">
+                        <span class="config-label">Material Exterior</span>
+                        <div class="fabric-selector">
+                            <button class="fabric-option selected" onclick="selectFabric(this)">Piel Premium</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="buy-action-btn" onclick="triggerPurchase('Oversized Court')">
+                    Adquirir Pieza <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- PRODUCTO 3: PLAYERA DOLCE & GABBANA -->
+            <div class="product-card" data-category="playeras">
+                <div>
+                    <div class="card-brand-badge">Dolce & Gabbana</div>
+                    <div class="product-display-frame">
+                        <i class="fa-solid fa-shirt"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Monogram Luxury Tee</h3>
+                        <div class="product-price">$3,400 MXN</div>
+                    </div>
+                    
+                    <div class="config-group">
+                        <span class="config-label">Talla Europea</span>
+                        <div class="size-selector">
+                            <button class="size-option" onclick="selectSize(this)">S</button>
+                            <button class="size-option selected" onclick="selectSize(this)">M</button>
+                            <button class="size-option" onclick="selectSize(this)">L</button>
+                        </div>
+                    </div>
+
+                    <div class="config-group">
+                        <span class="config-label">Composición</span>
+                        <div class="fabric-selector">
+                            <button class="fabric-option selected" onclick="selectFabric(this)">Algodón Egipcio</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="buy-action-btn" onclick="triggerPurchase('Monogram Luxury Tee')">
+                    Adquirir Pieza <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- PRODUCTO 4: SUDADERA NIKE -->
+            <div class="product-card" data-category="sudaderas">
+                <div>
+                    <div class="card-brand-badge">Nike Essentials</div>
+                    <div class="product-display-frame">
+                        <i class="fa-solid fa-shirt"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>NRG Heavyweight Hoodie</h3>
+                        <div class="product-price">$2,199 MXN</div>
+                    </div>
+                    
+                    <div class="config-group">
+                        <span class="config-label">Talla Americana</span>
+                        <div class="size-selector">
+                            <button class="size-option" onclick="selectSize(this)">M</button>
+                            <button class="size-option selected" onclick="selectSize(this)">L</button>
+                            <button class="size-option" onclick="selectSize(this)">XL</button>
+                        </div>
+                    </div>
+
+                    <div class="config-group">
+                        <span class="config-label">Tejido</span>
+                        <div class="fabric-selector">
+                            <button class="fabric-option selected" onclick="selectFabric(this)">Fleece de Alta Densidad</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="buy-action-btn" onclick="triggerPurchase('NRG Heavyweight Hoodie')">
+                    Adquirir Pieza <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- PRODUCTO 5: TENIS ADIDAS SNEAKERS -->
+            <div class="product-card" data-category="tenis">
+                <div>
+                    <div class="card-brand-badge">Adidas Originals</div>
+                    <div class="product-display-frame">
+                        <i class="fa-solid fa-shoe-prints"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Campus 00s "Core Black"</h3>
+                        <div class="product-price">$2,299 MXN</div>
+                    </div>
+                    
+                    <div class="config-group">
+                        <span class="config-label">Talla (CM)</span>
+                        <div class="size-selector">
+                            <button class="size-option" onclick="selectSize(this)">26</button>
+                            <button class="size-option selected" onclick="selectSize(this)">27</button>
+                            <button class="size-option" onclick="selectSize(this)">28</button>
+                        </div>
+                    </div>
+
+                    <div class="config-group">
+                        <span class="config-label">Materiales</span>
+                        <div class="fabric-selector">
+                            <button class="fabric-option selected" onclick="selectFabric(this)">Gamuza Afelpada</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="buy-action-btn" onclick="triggerPurchase('Campus 00s Core Black')">
+                    Adquirir Pieza <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- NOTIFICACIÓN DE PROCESAMIENTO -->
+    <div class="success-toast" id="purchaseToast">
+        <i class="fa-solid fa-circle-check"></i>
+        <div>
+            <div style="font-weight: 600; font-size: 0.85rem;">Configuración Guardada</div>
+            <div style="font-size: 0.75rem; color: var(--text-secondary);" id="toastDetails">Agregado al set de orden.</div>
+        </div>
+    </div>
+
+    <!-- FOOTER MATTE -->
     <footer>
-        <h2 style="font-family: 'Bungee'; margin-bottom: 20px; color: var(--primary);">BARBAS HATS & CO.</h2>
-        <div style="font-size: 1.5rem; margin-bottom: 20px;">
-            <i class="fab fa-instagram" style="margin: 0 10px;"></i>
-            <i class="fab fa-tiktok" style="margin: 0 10px;"></i>
-        </div>
-        <p style="color: var(--text-muted); font-size: 0.8rem;">© 2026 PREMIUM URBAN DROP</p>
+        <div class="footer-logo">STORE GH</div>
+        <p>&copy; 2026 Store GH Architecture. Luxury & Apparel Division.</p>
     </footer>
 
-    <a href="https://wa.me/123456789" class="wa-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
     <script>
-        function sendOrder(name, price) {
-            const phone = "123456789"; // Tu número aquí
-            const msg = `¡Hola Barbas Hats! 🔥 Me interesa este producto:
-            
-🧢 *PRODUCTO:* ${name}
-💰 *PRECIO:* ${price}
-
-¿Tienen disponibilidad?`;
-            window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(msg)}`, '_blank');
+        // Lógica interactiva de selección de especificaciones de producto
+        function selectSize(element) {
+            const parent = element.parentElement;
+            parent.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
         }
 
-        // Animaciones al hacer scroll
-        const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.style.opacity = "1";
-                    e.target.classList.add('animate__animated', 'animate__fadeInUp');
+        function selectFabric(element) {
+            const parent = element.parentElement;
+            parent.querySelectorAll('.fabric-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        // Filtro fluido del catálogo general
+        function filterCatalog(category) {
+            // Actualizar estado estético del botón de filtro
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                    card.style.animate = 'fadeIn 0.5s ease';
+                } else {
+                    card.style.display = 'none';
                 }
             });
-        }, { threshold: 0.1 });
+        }
 
-        document.querySelectorAll('.product-card, .step').forEach(el => {
-            el.style.opacity = "0";
-            scrollObserver.observe(el);
-        });
+        // Feedback interactivo al procesar orden
+        function triggerPurchase(productName) {
+            const toast = document.getElementById('purchaseToast');
+            const toastDetails = document.getElementById('toastDetails');
+            
+            toastDetails.innerText = `${productName} listo para coordinar envío.`;
+            toast.classList.add('active');
+            
+            setTimeout(() => {
+                toast.classList.remove('active');
+            }, 3500);
+        }
     </script>
 </body>
 </html>
