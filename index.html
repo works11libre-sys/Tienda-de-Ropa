@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Store GH | Premium Streetwear Syndicate</title>
+    <title>VNDL STUDIO | Premium Streetwear Syndicate</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-pure: #000000;
-            --bg-card: #0b0b0c;
-            --bg-surface: #121214;
-            --accent-white: #ffffff;
-            --border-glass: rgba(255, 255, 255, 0.06);
-            --border-hover: rgba(255, 255, 255, 0.2);
-            --text-main: #f5f5f7;
-            --text-secondary: #86868b;
-            --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            --bg-pure: #ffffff;
+            --bg-card: #f8f8fa;
+            --bg-surface: #f1f1f4;
+            --accent-black: #000000;
+            --border-glass: rgba(0, 0, 0, 0.08);
+            --border-hover: rgba(0, 0, 0, 0.3);
+            --text-main: #000000;
+            --text-secondary: #6e6e73;
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -39,12 +39,12 @@
         nav {
             position: fixed;
             top: 0; width: 100%;
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-glass);
             z-index: 100;
-            padding: 18px 24px;
+            padding: 16px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -55,7 +55,7 @@
             font-weight: 700;
             font-size: 1.1rem;
             letter-spacing: 4px;
-            color: var(--accent-white);
+            color: var(--accent-black);
             text-transform: uppercase;
         }
 
@@ -68,58 +68,51 @@
             position: relative;
             transition: var(--transition-smooth);
         }
-        
-        .cart-icon-btn:hover {
-            color: var(--text-secondary);
-            transform: scale(1.05);
-        }
 
         /* --- HERO --- */
         header {
-            padding: 160px 24px 60px 24px;
+            padding: 140px 24px 40px 24px;
             text-align: center;
-            position: relative;
         }
 
         header h1 {
             font-family: 'Syncopate', sans-serif;
-            font-size: clamp(2rem, 6vw, 3.8rem);
+            font-size: clamp(1.8rem, 6vw, 3.5rem);
             font-weight: 700;
-            letter-spacing: -2px;
+            letter-spacing: -1px;
             text-transform: uppercase;
-            line-height: 1;
+            line-height: 1.1;
             margin-bottom: 15px;
-            background: linear-gradient(180deg, #ffffff 40%, #555555 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--accent-black);
         }
 
         header p {
-            font-size: clamp(0.85rem, 1.8vw, 1rem);
+            font-size: clamp(0.85rem, 1.8vw, 0.95rem);
             color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 40px auto;
-            letter-spacing: 0.5px;
+            max-width: 550px;
+            margin: 0 auto 35px auto;
+            letter-spacing: 0.3px;
+            line-height: 1.5;
         }
 
         /* --- FILTROS DE CATEGORÍAS --- */
         .filter-container {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 8px;
             flex-wrap: wrap;
-            margin-bottom: 40px;
-            padding: 0 16px;
+            margin-bottom: 20px;
+            padding: 0 8px;
         }
 
         .filter-btn {
             background: var(--bg-card);
             color: var(--text-main);
             border: 1px solid var(--border-glass);
-            padding: 10px 24px;
+            padding: 10px 20px;
             border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 500;
+            font-size: 0.75rem;
+            font-weight: 600;
             cursor: pointer;
             transition: var(--transition-smooth);
             text-transform: uppercase;
@@ -127,110 +120,103 @@
         }
 
         .filter-btn:hover, .filter-btn.active {
-            background: var(--accent-white);
+            background: var(--accent-black);
             color: var(--bg-pure);
-            border-color: var(--accent-white);
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+            border-color: var(--accent-black);
         }
 
-        /* --- INSTALACIÓN DEL CATALOGO GRID --- */
+        /* --- CATALOGO GRID --- */
         .catalog-section {
-            max-width: 1300px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px 100px 24px;
+            padding: 0 20px 60px 20px;
         }
 
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 25px;
         }
 
-        /* --- PRODUCT CARD PREMIUM --- */
+        /* --- PRODUCT CARD --- */
         .product-card {
             background: var(--bg-card);
             border: 1px solid var(--border-glass);
-            border-radius: 24px;
-            padding: 24px;
+            border-radius: 20px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             transition: var(--transition-smooth);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-            position: relative;
         }
 
         .product-card:hover {
-            transform: translateY(-8px);
             border-color: var(--border-hover);
-            box-shadow: 0 30px 60px rgba(255, 255, 255, 0.03), 0 20px 40px rgba(0,0,0,0.6);
+            background: var(--bg-pure);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
         }
 
         .card-brand-badge {
             font-size: 0.65rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             color: var(--text-secondary);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .product-display-frame {
             width: 100%;
-            height: 220px;
+            height: 200px;
             background: var(--bg-surface);
-            border-radius: 16px;
-            margin-bottom: 20px;
+            border-radius: 14px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
             overflow: hidden;
         }
 
-        /* Íconos conceptuales premium que simulan el producto */
         .product-display-frame i {
-            font-size: 4.5rem;
-            color: rgba(255, 255, 255, 0.05);
+            font-size: 4rem;
+            color: rgba(0, 0, 0, 0.06);
             transition: var(--transition-smooth);
         }
 
         .product-card:hover .product-display-frame i {
-            transform: scale(1.1) rotate(-5deg);
-            color: rgba(255, 255, 255, 0.12);
+            transform: scale(1.08) rotate(-3deg);
+            color: rgba(0, 0, 0, 0.15);
         }
 
         .product-info h3 {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--accent-white);
-            margin-bottom: 6px;
-            letter-spacing: -0.3px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-black);
+            margin-bottom: 4px;
         }
 
         .product-price {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
         }
 
-        /* --- CONFIGURADORES INTERACTIVOS --- */
+        /* --- CONFIGURADORES --- */
         .config-group {
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .config-label {
             font-size: 0.65rem;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             color: var(--text-secondary);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             display: block;
         }
 
-        /* Selectores de Talla Modernos */
         .size-selector, .fabric-selector {
             display: flex;
             gap: 6px;
@@ -239,62 +225,138 @@
 
         .size-option, .fabric-option {
             background: var(--bg-surface);
-            border: 1px solid var(--border-glass);
+            border: 1px solid transparent;
             color: var(--text-main);
             padding: 6px 12px;
             font-size: 0.75rem;
             font-weight: 600;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
             transition: var(--transition-smooth);
         }
 
-        .size-option:hover, .fabric-option:hover {
-            border-color: var(--text-secondary);
-        }
-
         .size-option.selected, .fabric-option.selected {
-            background: var(--accent-white);
+            background: var(--accent-black);
             color: var(--bg-pure);
-            border-color: var(--accent-white);
         }
 
-        /* --- BOTÓN DE COMPRA ESTILO APPLE --- */
         .buy-action-btn {
             width: 100%;
-            background: var(--accent-white);
+            background: var(--accent-black);
             color: var(--bg-pure);
             border: none;
             padding: 14px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.85rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            margin-top: 15px;
+            margin-top: 10px;
             transition: var(--transition-smooth);
         }
 
-        .buy-action-btn:hover {
-            transform: scale(1.02);
-            background: #e5e5ea;
+        /* --- SECCIÓN LOGÍSTICA DE ENTREGA (CHECKOUT AREA) --- */
+        .delivery-section {
+            max-width: 600px;
+            margin: 0 auto 80px auto;
+            padding: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
         }
 
-        /* --- NOTIFICACIÓN MODAL --- */
+        .delivery-section h2 {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .delivery-methods {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .method-btn {
+            background: var(--bg-surface);
+            border: 1px solid transparent;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-secondary);
+            transition: var(--transition-smooth);
+        }
+
+        .method-btn i { font-size: 1.1rem; }
+
+        .method-btn.selected {
+            background: var(--bg-pure);
+            border-color: var(--accent-black);
+            color: var(--accent-black);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            background: var(--bg-pure);
+            border: 1px solid var(--border-glass);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-family: inherit;
+            color: var(--text-main);
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .form-group input:focus {
+            border-color: var(--accent-black);
+        }
+
+        .hidden-fields {
+            display: none;
+        }
+
+        /* --- TOAST --- */
         .success-toast {
             position: fixed;
-            bottom: 30px; right: 30px;
-            background: var(--bg-surface);
-            border: 1px solid var(--border-hover);
-            padding: 16px 24px;
-            border-radius: 16px;
+            bottom: 20px; left: 5%; right: 5%;
+            background: var(--accent-black);
+            color: var(--bg-pure);
+            padding: 14px 20px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             gap: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             z-index: 110;
             transform: translateY(150%);
             opacity: 0;
@@ -306,47 +368,45 @@
             opacity: 1;
         }
 
-        .success-toast i {
-            color: #34c759; /* Verde iOS */
-            font-size: 1.2rem;
-        }
+        .success-toast i { color: #34c759; }
 
         /* --- FOOTER --- */
         footer {
-            padding: 60px 24px;
+            padding: 40px 24px;
             border-top: 1px solid var(--border-glass);
             text-align: center;
-            background: #050505;
+            background: var(--bg-card);
         }
 
         .footer-logo {
             font-family: 'Syncopate', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 3px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         footer p {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
-        /* --- RESPONSIVO --- */
+        /* --- RESPONSIVO MÓVIL (AJUSTES PRECISOS) --- */
         @media (max-width: 768px) {
-            header { padding-top: 130px; }
-            .products-grid { grid-template-columns: 1fr; gap: 20px; }
-            .filter-container { gap: 8px; }
-            .filter-btn { padding: 8px 18px; font-size: 0.75rem; }
+            header { padding-top: 100px; }
+            .products-grid { grid-template-columns: 1fr; gap: 16px; }
+            .filter-container { overflow-x: auto; justify-content: flex-start; white-space: nowrap; padding-bottom: 5px; }
+            .filter-btn { padding: 8px 16px; }
+            .delivery-section { border-radius: 0; border-left: none; border-right: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAV BAR BAR -->
+    <!-- NAV BAR -->
     <nav>
-        <div class="brand-logo">STORE GH</div>
+        <div class="brand-logo">VNDL STUDIO</div>
         <button class="cart-icon-btn"><i class="fa-solid fa-bag-shopping"></i></button>
     </nav>
 
@@ -355,13 +415,12 @@
         <h1>ALTA COSTURA STREET</h1>
         <p>Curaduría exclusiva de drops limitados. Diseñado para las calles, confeccionado para el lujo.</p>
         
-        <!-- CONTROLES FILTRADO -->
         <div class="filter-container">
-            <button class="filter-btn active" onclick="filterCatalog('all')">Ver Todo</button>
-            <button class="filter-btn" onclick="filterCatalog('gorras')">Gorras</button>
-            <button class="filter-btn" onclick="filterCatalog('playeras')">Playeras</button>
-            <button class="filter-btn" onclick="filterCatalog('sudaderas')">Sudaderas</button>
-            <button class="filter-btn" onclick="filterCatalog('tenis')">Sneakers</button>
+            <button class="filter-btn active" onclick="filterCatalog('all', event)">Ver Todo</button>
+            <button class="filter-btn" onclick="filterCatalog('gorras', event)">Gorras</button>
+            <button class="filter-btn" onclick="filterCatalog('playeras', event)">Playeras</button>
+            <button class="filter-btn" onclick="filterCatalog('sudaderas', event)">Sudaderas</button>
+            <button class="filter-btn" onclick="filterCatalog('tenis', event)">Sneakers</button>
         </div>
     </header>
 
@@ -369,7 +428,7 @@
     <main class="catalog-section">
         <div class="products-grid" id="catalogGrid">
             
-            <!-- PRODUCTO 1: GORRA BARBAS HATS -->
+            <!-- PRODUCTO 1 -->
             <div class="product-card" data-category="gorras">
                 <div>
                     <div class="card-brand-badge">Barbas Hats Co.</div>
@@ -377,33 +436,30 @@
                         <i class="fa-solid fa-hat-cowboy-side"></i>
                     </div>
                     <div class="product-info">
-                        <h3>Gorra "Vanguard" Edition</h3>
+                        <h3>Gorra "Vanguard"</h3>
                         <div class="product-price">$1,200 MXN</div>
                     </div>
-                    
-                    <!-- Configuración Interactiva -->
                     <div class="config-group">
-                        <span class="config-label">Talla (Medida)</span>
+                        <span class="config-label">Talla</span>
                         <div class="size-selector">
-                            <button class="size-option selected" onclick="selectSize(this)">S/M (56cm)</button>
-                            <button class="size-option" onclick="selectSize(this)">L/XL (58cm)</button>
+                            <button class="size-option selected" onclick="selectOption(this, '.size-option')">S/M (56cm)</button>
+                            <button class="size-option" onclick="selectOption(this, '.size-option')">L/XL (58cm)</button>
                         </div>
                     </div>
-
                     <div class="config-group">
-                        <span class="config-label">Material / Tela</span>
+                        <span class="config-label">Material</span>
                         <div class="fabric-selector">
-                            <button class="fabric-option selected" onclick="selectFabric(this)">Gamuza</button>
-                            <button class="fabric-option" onclick="selectFabric(this)">Algodón</button>
+                            <button class="fabric-option selected" onclick="selectOption(this, '.fabric-option')">Gamuza</button>
+                            <button class="fabric-option" onclick="selectOption(this, '.fabric-option')">Algodón</button>
                         </div>
                     </div>
                 </div>
-                <button class="buy-action-btn" onclick="triggerPurchase('Gorra Vanguard')">
-                    Adquirir Pieza <i class="fa-solid fa-arrow-right"></i>
+                <button class="buy-action-btn" onclick="selectProduct('Gorra Vanguard', '$1,200 MXN')">
+                    Seleccionar Pieza <i class="fa-solid fa-check"></i>
                 </button>
             </div>
 
-            <!-- PRODUCTO 2: SNEAKERS ALEXANDER MCQUEEN -->
+            <!-- PRODUCTO 2 -->
             <div class="product-card" data-category="tenis">
                 <div>
                     <div class="card-brand-badge">Alexander McQueen</div>
@@ -414,30 +470,21 @@
                         <h3>Oversized Court Black</h3>
                         <div class="product-price">$9,800 MXN</div>
                     </div>
-                    
                     <div class="config-group">
                         <span class="config-label">Talla (EUR)</span>
                         <div class="size-selector">
-                            <button class="size-option selected" onclick="selectSize(this)">40</button>
-                            <button class="size-option" onclick="selectSize(this)">41</button>
-                            <button class="size-option" onclick="selectSize(this)">42</button>
-                            <button class="size-option" onclick="selectSize(this)">43</button>
-                        </div>
-                    </div>
-
-                    <div class="config-group">
-                        <span class="config-label">Material Exterior</span>
-                        <div class="fabric-selector">
-                            <button class="fabric-option selected" onclick="selectFabric(this)">Piel Premium</button>
+                            <button class="size-option selected" onclick="selectOption(this, '.size-option')">41</button>
+                            <button class="size-option" onclick="selectOption(this, '.size-option')">42</button>
+                            <button class="size-option" onclick="selectOption(this, '.size-option')">43</button>
                         </div>
                     </div>
                 </div>
-                <button class="buy-action-btn" onclick="triggerPurchase('Oversized Court')">
-                    Adquirir Pieza <i class="fa-solid fa-arrow-right"></i>
+                <button class="buy-action-btn" onclick="selectProduct('Oversized Court Black', '$9,800 MXN')">
+                    Seleccionar Pieza <i class="fa-solid fa-check"></i>
                 </button>
             </div>
 
-            <!-- PRODUCTO 3: PLAYERA DOLCE & GABBANA -->
+            <!-- PRODUCTO 3 -->
             <div class="product-card" data-category="playeras">
                 <div>
                     <div class="card-brand-badge">Dolce & Gabbana</div>
@@ -448,129 +495,111 @@
                         <h3>Monogram Luxury Tee</h3>
                         <div class="product-price">$3,400 MXN</div>
                     </div>
-                    
                     <div class="config-group">
-                        <span class="config-label">Talla Europea</span>
+                        <span class="config-label">Talla</span>
                         <div class="size-selector">
-                            <button class="size-option" onclick="selectSize(this)">S</button>
-                            <button class="size-option selected" onclick="selectSize(this)">M</button>
-                            <button class="size-option" onclick="selectSize(this)">L</button>
-                        </div>
-                    </div>
-
-                    <div class="config-group">
-                        <span class="config-label">Composición</span>
-                        <div class="fabric-selector">
-                            <button class="fabric-option selected" onclick="selectFabric(this)">Algodón Egipcio</button>
+                            <button class="size-option" onclick="selectOption(this, '.size-option')">S</button>
+                            <button class="size-option selected" onclick="selectOption(this, '.size-option')">M</button>
+                            <button class="size-option" onclick="selectOption(this, '.size-option')">L</button>
                         </div>
                     </div>
                 </div>
-                <button class="buy-action-btn" onclick="triggerPurchase('Monogram Luxury Tee')">
-                    Adquirir Pieza <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
-
-            <!-- PRODUCTO 4: SUDADERA NIKE -->
-            <div class="product-card" data-category="sudaderas">
-                <div>
-                    <div class="card-brand-badge">Nike Essentials</div>
-                    <div class="product-display-frame">
-                        <i class="fa-solid fa-shirt"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3>NRG Heavyweight Hoodie</h3>
-                        <div class="product-price">$2,199 MXN</div>
-                    </div>
-                    
-                    <div class="config-group">
-                        <span class="config-label">Talla Americana</span>
-                        <div class="size-selector">
-                            <button class="size-option" onclick="selectSize(this)">M</button>
-                            <button class="size-option selected" onclick="selectSize(this)">L</button>
-                            <button class="size-option" onclick="selectSize(this)">XL</button>
-                        </div>
-                    </div>
-
-                    <div class="config-group">
-                        <span class="config-label">Tejido</span>
-                        <div class="fabric-selector">
-                            <button class="fabric-option selected" onclick="selectFabric(this)">Fleece de Alta Densidad</button>
-                        </div>
-                    </div>
-                </div>
-                <button class="buy-action-btn" onclick="triggerPurchase('NRG Heavyweight Hoodie')">
-                    Adquirir Pieza <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
-
-            <!-- PRODUCTO 5: TENIS ADIDAS SNEAKERS -->
-            <div class="product-card" data-category="tenis">
-                <div>
-                    <div class="card-brand-badge">Adidas Originals</div>
-                    <div class="product-display-frame">
-                        <i class="fa-solid fa-shoe-prints"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3>Campus 00s "Core Black"</h3>
-                        <div class="product-price">$2,299 MXN</div>
-                    </div>
-                    
-                    <div class="config-group">
-                        <span class="config-label">Talla (CM)</span>
-                        <div class="size-selector">
-                            <button class="size-option" onclick="selectSize(this)">26</button>
-                            <button class="size-option selected" onclick="selectSize(this)">27</button>
-                            <button class="size-option" onclick="selectSize(this)">28</button>
-                        </div>
-                    </div>
-
-                    <div class="config-group">
-                        <span class="config-label">Materiales</span>
-                        <div class="fabric-selector">
-                            <button class="fabric-option selected" onclick="selectFabric(this)">Gamuza Afelpada</button>
-                        </div>
-                    </div>
-                </div>
-                <button class="buy-action-btn" onclick="triggerPurchase('Campus 00s Core Black')">
-                    Adquirir Pieza <i class="fa-solid fa-arrow-right"></i>
+                <button class="buy-action-btn" onclick="selectProduct('Monogram Luxury Tee', '$3,400 MXN')">
+                    Seleccionar Pieza <i class="fa-solid fa-check"></i>
                 </button>
             </div>
 
         </div>
     </main>
 
-    <!-- NOTIFICACIÓN DE PROCESAMIENTO -->
+    <!-- LOGÍSTICA DE ENTREGA INTERACTIVA -->
+    <section class="delivery-section" id="checkoutZone">
+        <h2>Detalles de Entrega</h2>
+        
+        <div class="delivery-methods">
+            <button class="method-btn selected" onclick="switchDelivery('personal', this)">
+                <i class="fa-solid fa-handshake"></i>
+                Entrega Personal
+            </button>
+            <button class="method-btn" onclick="switchDelivery('paqueteria', this)">
+                <i class="fa-solid fa-truck-fast"></i>
+                Envío Nacional
+            </button>
+        </div>
+
+        <form id="deliveryForm">
+            <!-- Campos Universales -->
+            <div class="form-group">
+                <label>Nombre Completo</label>
+                <input type="text" id="custName" placeholder="Ej. Juan Pérez" required>
+            </div>
+            <div class="form-group">
+                <label>WhatsApp / Teléfono</label>
+                <input type="tel" id="custPhone" placeholder="Ej. 5512345678" required>
+            </div>
+
+            <!-- Campos Dinámicos Entrega Personal -->
+            <div id="personalFields">
+                <div class="form-group">
+                    <label>Punto de Encuentro / Estación Mandatoria</label>
+                    <select id="meetPoint">
+                        <option value="Centro Historico">Centro Histórico / Bellas Artes</option>
+                        <option value="Roma-Condesa">Zona Roma / Condesa</option>
+                        <option value="Estacion Metro">Estación de Metro a convenir</option>
+                        <option value="Oficina Central">Showroom / Oficina Temporal</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Campos Dinámicos Paquetería -->
+            <div id="shippingFields" class="hidden-fields">
+                <div class="form-group">
+                    <label>Dirección Completa (Calle, Número, Colonia)</label>
+                    <input type="text" id="shipAddress" placeholder="Av. Juárez 123, Col. Centro">
+                </div>
+                <div class="form-group">
+                    <label>Código Postal</label>
+                    <input type="text" id="shipCP" placeholder="06000">
+                </div>
+                <div class="form-group">
+                    <label>Estado / Ciudad</label>
+                    <input type="text" id="shipCity" placeholder="CDMX / Jalisco / Nuevo León">
+                </div>
+            </div>
+
+            <button type="button" class="buy-action-btn" style="background:#000; color:#fff;" onclick="processOrder()">
+                Confirmar y Ordenar por WhatsApp <i class="fa-brand fa-whatsapp"></i>
+            </button>
+        </form>
+    </section>
+
+    <!-- TOAST NOTIFICACIÓN -->
     <div class="success-toast" id="purchaseToast">
         <i class="fa-solid fa-circle-check"></i>
         <div>
-            <div style="font-weight: 600; font-size: 0.85rem;">Configuración Guardada</div>
-            <div style="font-size: 0.75rem; color: var(--text-secondary);" id="toastDetails">Agregado al set de orden.</div>
+            <div style="font-weight: 700; font-size: 0.85rem;" id="toastTitle">Pieza Lista</div>
+            <div style="font-size: 0.75rem; opacity: 0.8;" id="toastDetails">Agregado al set de orden.</div>
         </div>
     </div>
 
-    <!-- FOOTER MATTE -->
+    <!-- FOOTER -->
     <footer>
-        <div class="footer-logo">STORE GH</div>
-        <p>&copy; 2026 Store GH Architecture. Luxury & Apparel Division.</p>
+        <div class="footer-logo">VNDL STUDIO</div>
+        <p>&copy; 2026 VNDL Studio Architecture. Luxury & Apparel Division.</p>
     </footer>
 
     <script>
-        // Lógica interactiva de selección de especificaciones de producto
-        function selectSize(element) {
+        let currentProduct = "Ninguno";
+        let currentPrice = "";
+        let selectedMethod = "personal";
+
+        function selectOption(element, className) {
             const parent = element.parentElement;
-            parent.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+            parent.querySelectorAll(className).forEach(opt => opt.classList.remove('selected'));
             element.classList.add('selected');
         }
 
-        function selectFabric(element) {
-            const parent = element.parentElement;
-            parent.querySelectorAll('.fabric-option').forEach(opt => opt.classList.remove('selected'));
-            element.classList.add('selected');
-        }
-
-        // Filtro fluido del catálogo general
-        function filterCatalog(category) {
-            // Actualizar estado estético del botón de filtro
+        function filterCatalog(category, event) {
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             event.currentTarget.classList.add('active');
@@ -579,24 +608,72 @@
             cards.forEach(card => {
                 if (category === 'all' || card.getAttribute('data-category') === category) {
                     card.style.display = 'flex';
-                    card.style.animate = 'fadeIn 0.5s ease';
                 } else {
                     card.style.display = 'none';
                 }
             });
         }
 
-        // Feedback interactivo al procesar orden
-        function triggerPurchase(productName) {
+        function switchDelivery(method, btn) {
+            document.querySelectorAll('.method-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            selectedMethod = method;
+
+            if(method === 'personal') {
+                document.getElementById('personalFields').style.display = 'block';
+                document.getElementById('shippingFields').style.display = 'none';
+            } else {
+                document.getElementById('personalFields').style.display = 'none';
+                document.getElementById('shippingFields').style.display = 'block';
+            }
+        }
+
+        function selectProduct(name, price) {
+            currentProduct = name;
+            currentPrice = price;
+            
             const toast = document.getElementById('purchaseToast');
-            const toastDetails = document.getElementById('toastDetails');
+            document.getElementById('toastTitle').innerText = "Pieza Seleccionada";
+            document.getElementById('toastDetails').innerText = `${name} (${price}) se vinculó a los datos de entrega.`;
             
-            toastDetails.innerText = `${productName} listo para coordinar envío.`;
             toast.classList.add('active');
-            
-            setTimeout(() => {
-                toast.classList.remove('active');
-            }, 3500);
+            setTimeout(() => toast.classList.remove('active'), 3500);
+
+            // Hacer scroll suave directo al formulario de entrega en móviles
+            document.getElementById('checkoutZone').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function processOrder() {
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+
+            if(!name || !phone) {
+                alert("Por favor llena los campos obligatorios (Nombre y WhatsApp)");
+                return;
+            }
+
+            let logisticaText = "";
+            if(selectedMethod === 'personal') {
+                const punto = document.getElementById('meetPoint').value;
+                logisticaText = `Método: Entrega Personal\nZona propuesta: ${punto}`;
+            } else {
+                const addr = document.getElementById('shipAddress').value;
+                const cp = document.getElementById('shipCP').value;
+                const city = document.getElementById('shipCity').value;
+                logisticaText = `Método: Envío por Paquetería\nDirección: ${addr}, CP: ${cp}, Ciudad: ${city}`;
+            }
+
+            // Construcción del mensaje profesional para WhatsApp
+            const mensaje = `Hola VNDL STUDIO, me interesa ordenar:\n\n` +
+                            `• Pieza: ${currentProduct}\n` +
+                            `• Precio: ${currentPrice}\n\n` +
+                            `Datos del Cliente:\n` +
+                            `• Nombre: ${name}\n` +
+                            `• Tel: ${phone}\n\n` +
+                            `Logística de Entrega:\n${logisticaText}`;
+
+            const url = `https://wa.me/5215500000000?text=${encodeURIComponent(mensaje)}`; // Reemplaza con tu número real
+            window.open(url, '_blank');
         }
     </script>
 </body>
